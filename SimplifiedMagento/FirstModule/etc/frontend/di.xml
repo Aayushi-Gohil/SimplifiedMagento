@@ -5,6 +5,13 @@
 	<preference for="SimplifiedMagento\FirstModule\Api\Color" type="SimplifiedMagento\FirstModule\Model\Yellow"/>
 	<preference for="SimplifiedMagento\FirstModule\Api\Size" type="SimplifiedMagento\FirstModule\Model\Normal"/>
 	<preference for="SimplifiedMagento\FirstModule\Api\Brightness" type="SimplifiedMagento\FirstModule\Model\Medium"/>
+	<type name="SimplifiedMagento\FirstModule\Controller\Page\HelloWorld">
+       <arguments>
+           <argument name="heavyService" xsi:type="object">
+               SimplifiedMagento\FirstModule\Model\HeavyService\Proxy
+           </argument>
+       </arguments>
+   </type>
 	<!-- <type name="SimplifiedMagento\FirstModule\Model\Pencil">
 		<arguments>
 			<argument name ="color" xsi:type="object">SimplifiedMagento\FirstModule\Model\Red</argument>

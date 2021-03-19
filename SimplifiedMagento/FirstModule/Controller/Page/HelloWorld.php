@@ -13,6 +13,8 @@ use SimplifiedMagento\FirstModule\Api\PencilInterface;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 use SimplifiedMagento\FirstModule\Model\PencilFactory;
 use Magento\Catalog\Model\ProductFactory;
+use Magento\Framework\App\Request\Http;
+use SimplifiedMagento\FirstModule\Model\HeavyService;
 
 class HelloWorld extends \Magento\Framework\App\Action\Action
 {
@@ -20,13 +22,17 @@ class HelloWorld extends \Magento\Framework\App\Action\Action
 	protected $productRepository;
 	protected $pencilFactory;
 	protected $productFactory;
+	protected $http;
+	protected $heavyService;
 
-	public function __construct(Context $context, ProductFactory $productFactory,PencilInterface $pencilInterface, PencilFactory $pencilFactory, ProductRepositoryInterface $productRepository)
+	public function __construct(Context $context, ProductFactory $productFactory,PencilInterface $pencilInterface, PencilFactory $pencilFactory, ProductRepositoryInterface $productRepository, Http $http, HeavyService $heavyService)
 	{
 		$this->pencilInterface = $pencilInterface;
 		$this->pencilFactory = $pencilFactory;
 		$this->productRepository = $productRepository;
 		$this->productFactory = $productFactory;
+		$this->http = $http;
+		$this->heavyService = $heavyService;
 		parent::__construct($context);
 	}
 
@@ -66,5 +72,13 @@ class HelloWorld extends \Magento\Framework\App\Action\Action
 		echo "<pre>";var_dump($productName);echo "</pre>";
 		$productSku = $product->getIdBySku('Flexible Bottle');
 		echo "<pre>";var_dump($productSku);echo "</pre>";
+
+		echo "<h3>Proxies</h3>";
+		$id = $this->http->getParam('id',1);
+		if ($id == 1) {
+			$this->heavyService->printHeavyServiceMessage();
+		} else{
+			echo "Heavy Service not used";
+		}
 	}
 }

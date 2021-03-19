@@ -4,5 +4,10 @@
         <block class="SimplifiedMagento\FirstModule\Block\Display" name="firstmodule_display" template="SimplifiedMagento_FirstModule::sayhello.phtml" />
         <block class="SimplifiedMagento\FirstModule\Block\Display" name="firstmodule_display_name" template="SimplifiedMagento_FirstModule::sayname.phtml" />
         <block class="SimplifiedMagento\FirstModule\Block\Display" name="firstmodule_display_store" template="SimplifiedMagento_FirstModule::store.phtml" />
+        <block class="SimplifiedMagento\FirstModule\Block\Display" name="firstmodule_display_featured" template="SimplifiedMagento_FirstModule::featured.phtml">
+        	<arguments>
+        		<argument name="view_model" xsi:type="object">SimplifiedMagento\FirstModule\ViewModel\Example</argument>
+        	</arguments>
+        </block>
     </referenceContainer>
 </page>
