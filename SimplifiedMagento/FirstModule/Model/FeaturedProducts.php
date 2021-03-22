@@ -2,8 +2,9 @@
 
 namespace SimplifiedMagento\FirstModule\Model;
 
-use SimplifiedMagento\FirstModule\Model\FeturedProducts\FeaturedCategory;
-use SimplifiedMagento\FirstModule\Model\FeturedProducts\FeaturedSale;
+use SimplifiedMagento\FirstModule\Model\FeaturedProducts\FeaturedCategory;
+use SimplifiedMagento\FirstModule\Model\FeaturedProducts\FeaturedSale;
+use SimplifiedMagento\FirstModule\Model\FeaturedProducts\FeturedProductsInterface;
 
 /**
  * 
@@ -11,7 +12,7 @@ use SimplifiedMagento\FirstModule\Model\FeturedProducts\FeaturedSale;
 class FeaturedProducts implements FeturedProductsInterface
 {
 
-	protected array $featuredProducts = [];
+	protected $featuredProducts = [];
 	protected $featuredSale;
 	protected $featuredCategory;
 	
@@ -29,4 +30,8 @@ class FeaturedProducts implements FeturedProductsInterface
 		return $this->featuredCategory->getFeaturedProducts();
 	}
 
+	public function count() : int
+	{
+		
+	}
 }

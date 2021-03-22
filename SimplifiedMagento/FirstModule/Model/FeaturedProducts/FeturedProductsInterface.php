@@ -1,6 +1,6 @@
 <?php
 
-namespace SimplifiedMagento\FirstModule\Model\FeturedProducts;
+namespace SimplifiedMagento\FirstModule\Model\FeaturedProducts;
 
 interface FeturedProductsInterface{
 

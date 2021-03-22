@@ -1,8 +1,8 @@
 <?php
 
-namespace SimplifiedMagento\FirstModule\Model\FeturedProducts;
+namespace SimplifiedMagento\FirstModule\Model\FeaturedProducts;
 
-// use SimplifiedMagento\FirstModule\Model\FeturedProducts\FeturedProductsInterface;
+use SimplifiedMagento\FirstModule\Model\FeaturedProducts\FeturedProductsInterface;
 
 /**
  * 
@@ -10,7 +10,7 @@ namespace SimplifiedMagento\FirstModule\Model\FeturedProducts;
 class FeaturedSale implements FeturedProductsInterface
 {
 
-	protected array $featuredProducts = [];
+	protected $featuredProducts = [];
 	
 	function __construct()
 	{
