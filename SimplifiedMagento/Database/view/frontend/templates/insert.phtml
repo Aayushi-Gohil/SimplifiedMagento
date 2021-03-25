@@ -1,3 +1,37 @@
 <?php
  $record = $block->getEditRecord();
- var_dump($record);
+ $active = $inactive = '';
+ if($record['post_id']){
+ 	 if ($record['status']) {
+	 	 $active = 'selected';
+	 }else{
+	 	$inactive = 'selected';
+	 }
+ }
+?>
+<form method="POST" action="<?php echo $block->getUrl('database/index/save'); ?>" >
+  <fieldset>
+    <legend>Post</legend>
+    Post Name:<br>
+    <input type="text" name="name" value="<?php echo $record['name'] ?>"  placeholder="Enter Post Name" required>
+    <br>
+    Post Url:<br>
+    <input type="text" name="url_key" value="<?php echo $record['url_key'] ?>" placeholder="Enter Post Url" required>
+    <br>
+    Post Content:<br>
+    <input type="text" name="post_content" value="<?php echo $record['post_content'] ?>" placeholder="Enter Post Content" required>
+    <br>
+    Post Tags:<br>
+    <input type="text" name="tags" value="<?php echo $record['tags'] ?>" placeholder="Enter Post Tags" required>
+    <br>
+    Post Status:<br>
+    <select name="status" required>
+    	<option>--SELECT--</option>
+    	<option value="1" <?php echo $active; ?>>Active</option>
+    	<option value="0" <?php echo $inactive; ?>>Inactive</option>
+    </select>
+    <br><br>
+	<input type="hidden" name="editRecordId" value="<?php echo $record['post_id'] ?>" >
+    <input type="submit" value="Submit">
+  </fieldset>
+</form>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/webapi.xsd">
+	<route method="GET" url="/v1/post">
+		<service class="SimplifiedMagento\Database\Api\PostRepositoryInterface" method="getList" />
+		<resources>
+			<resource ref="anonymous" />
+		</resources>
+	</route>
+</routes>

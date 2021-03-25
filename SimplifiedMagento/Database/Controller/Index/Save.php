@@ -25,18 +25,18 @@ class Save extends \Magento\Framework\App\Action\Action
      public function execute()
      {
           if ($this->getRequest()->isPost()) {
-               $input = $this->getRequest()->getPostValue();
-               $post = $this->_postFactory->create();
+              $input = $this->getRequest()->getPostValue();
+              $post = $this->_postFactory->create();
  
-          if($input['editRecordId']){
-                    $post->load($input['editRecordId']);
-                    $post->addData($input);
-                    $post->setId($input['editRecordId']);
-                    $post->save();
-          }else{
-               $post->setData($input)->save();
-          }
- 
+	          if($input['editRecordId']){
+	                    $post->load($input['editRecordId']);
+	                    $post->addData($input);
+	                    $post->setId($input['editRecordId']);
+	                    $post->save();
+	          }else{
+	               $post->setData($input)->save();
+	          }
+               
               return $this->_redirect('database/index/index');
           }
      }

@@ -7,7 +7,7 @@ interface PostInterface
      const ID = "entity_id";
      // const STATUS = "status";
      /**
-      * return int
+      * @return int
       */
      public function getId();
 
