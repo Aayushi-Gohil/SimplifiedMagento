@@ -9,5 +9,6 @@
         		<argument name="view_model" xsi:type="object">SimplifiedMagento\FirstModule\ViewModel\Example</argument>
         	</arguments>
         </block>
+        <block class="SimplifiedMagento\FirstModule\Block\Products" name="firstmodule_display_product" template="SimplifiedMagento_FirstModule::product.phtml" />
     </referenceContainer>
 </page>

@@ -9,14 +9,14 @@
 	 }
  }
 ?>
-<form method="POST" action="<?php echo $block->getUrl('database/index/save'); ?>" >
+<form method="POST" action="<?php echo $block->getUrl('database/index/save'); ?>" data-mage-init='{"validation":{"rules": {"field-4": {"required":true}}}}'>
   <fieldset>
     <legend>Post</legend>
     Post Name:<br>
     <input type="text" name="name" value="<?php echo $record['name'] ?>"  placeholder="Enter Post Name" required>
     <br>
     Post Url:<br>
-    <input type="text" name="url_key" value="<?php echo $record['url_key'] ?>" placeholder="Enter Post Url" required>
+    <input type="text" name="url_key" value="<?php echo $record['url_key'] ?>" placeholder="Enter Post Url" required >
     <br>
     Post Content:<br>
     <input type="text" name="post_content" value="<?php echo $record['post_content'] ?>" placeholder="Enter Post Content" required>
@@ -35,3 +35,4 @@
     <input type="submit" value="Submit">
   </fieldset>
 </form>
+<!--  <input type="text" name="url_key"  placeholder="Enter Post Url" required data-validate='{"required":true, "url": true}'> -->

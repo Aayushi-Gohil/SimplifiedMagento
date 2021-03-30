@@ -8,4 +8,9 @@ interface PostRepositoryInterface
      */
     public function getList();
 
+    /**
+     * @param int $id
+     * @return \SimplifiedMagento\Database\Api\Data\PostInterface
+     */
+    public function getPostById($id);
 }

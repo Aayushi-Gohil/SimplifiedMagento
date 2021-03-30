@@ -6,4 +6,10 @@
 			<resource ref="anonymous" />
 		</resources>
 	</route>
+	<route method="GET" url="/v1/post/:id">
+		<service class="SimplifiedMagento\Database\Api\PostRepositoryInterface" method="getPostById" />
+		<resources>
+			<resource ref="anonymous" />
+		</resources>
+	</route>
 </routes>

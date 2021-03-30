@@ -29,7 +29,7 @@ class Edit extends \Magento\Framework\View\Element\Template
      public function getEditRecord()
      {
           $id = $this->_coreRegistry->registry('editRecordId');
-               $post = $this->_postLoader->create();
+          $post = $this->_postLoader->create();
           $result = $post->load($id);
           $result = $result->getData();
                return $result;

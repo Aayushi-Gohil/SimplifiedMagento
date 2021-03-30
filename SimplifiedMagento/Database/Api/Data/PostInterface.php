@@ -4,12 +4,12 @@ namespace SimplifiedMagento\Database\Api\Data;
 interface PostInterface
 {
      // const NAME = "name";
-     const ID = "entity_id";
+     const POST_ID = "post_id";
      // const STATUS = "status";
      /**
-      * @return int
+      //* @return int
       */
-     public function getId();
+     //public function getId();
 
      // /**
      //  * return string
@@ -22,10 +22,10 @@ interface PostInterface
      // public function getStatus();
 
      /**
-      * @param int $id
+      //* @param int $id
       * @return \SimplifiedMagento\Database\Api\Data\PostInterface
       */
-     public function setId($id);
+     //public function setId($id);
 
      // /**
      //  * @param string $name
@@ -38,4 +38,34 @@ interface PostInterface
      //  * @return \SimplifiedMagento\Database\Api\Data\PostInterface
      //  */
      // public function setStatus($status);
+
+    /**
+     * Gets the ID for the order.
+     *
+     * @return int|null Order ID.
+     */
+    public function getPostId();
+
+    /**
+     * Sets entity ID.
+     *
+     * @param int $postId
+     * @return $this
+     */
+    public function setPostId($postId);
+
+    /**
+     * Gets the ID for the order.
+     *
+    // * @return \SimplifiedMagento\Database\Api\Data\PostExtensionInterface
+     */
+    //public function getExtensionAttributes();
+
+    /**
+     * Sets entity ID.
+     *
+   //  * @param \SimplifiedMagento\Database\Api\Data\PostExtensionInterface $postExtensionInterface
+     * @return $this
+     */
+    //public function setExtensionAttributes(\SimplifiedMagento\Database\Api\Data\PostExtensionInterface $postExtensionInterface);
 }

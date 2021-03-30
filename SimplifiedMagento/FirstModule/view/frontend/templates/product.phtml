@@ -1,0 +1,10 @@
+<?php
+echo "<h2>Search Criteria</h2>";
+// var_dump(get_class_methods($block));die;
+// $collection = $block->getProductCollection();
+// foreach ($collection as $_product) {
+//     echo $_product->getName() . ' - ' . $_product->getProductUrl() . '<br />';
+// }
+
+$collection = $block->getProducts();
+var_dump($collection);die;

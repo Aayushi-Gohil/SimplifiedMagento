@@ -25,7 +25,7 @@ class Delete extends \Magento\Framework\App\Action\Action
           $id = $this->_request->getParam('id');
           $post = $this->_postFactory->create();
           $result = $post->setId($id);
-          $result = $result->delete();
+          $result = $result->delete(); 
           return $this->_redirect('database/index/index');
      }
 }
