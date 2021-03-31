@@ -1,0 +1,14 @@
+{
+    "brand_example": {
+        "column": {
+            "id": true,
+            "name": true,
+            "description": true,
+            "is_enabled": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "BRAND_EXAMPLE_NAME": true
+        }
+    }
+}
