@@ -1,0 +1,15 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="brand_example">
+        <column xsi:type="int" name="id" padding="10" unsigned="true" identity="true" nullable="false" comment="Brand Id"/>
+        <column xsi:type="varchar" name="name" nullable="false" length="255" comment="Brand Name"/>
+        <column xsi:type="text" name="description" nullable="false" comment="Brand Description"/>
+        <column xsi:type="boolean" name="is_enabled" nullable="false" default="0" comment="Is Brand Enabled?"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="tmp">
+            <column name="name"/>
+        </constraint>
+    </table>
+</schema>
