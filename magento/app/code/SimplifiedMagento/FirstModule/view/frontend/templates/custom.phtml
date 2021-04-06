@@ -1,0 +1,26 @@
+<?php
+
+// $hellow = $block->getHelloWorld();
+// $helloArr = $block->helloArray();
+$viewModel = $block->getData('view_model');
+$hellow = $viewModel->getHelloWorld();
+$helloArr = $viewModel->helloArray();
+
+?>
+
+
+<h1>This is from custom file</h1>
+
+
+<?php echo  $hellow . "<br>"; ?>
+<?php foreach ($helloArr as $arr) { ?>
+	
+<ul>
+	<li><?php echo $arr; ?></li>
+</ul>
+
+<?php } ?>
+
+<?php echo  "<br>" . $block->getProductName(); ?>
+
+<?php echo  "<br>" . rand(1,100); ?>

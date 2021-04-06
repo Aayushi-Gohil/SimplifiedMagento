@@ -81,15 +81,15 @@ class HelloWorld extends \Magento\Framework\App\Action\Action
 			echo "Heavy Service not used";
 		}
 
-		echo "<h3>Extension Attribute</h3>";
-		$objectManagerAtr = \Magento\Framework\App\ObjectManager::getInstance();
-		$addressInformation = $objectManagerAtr->create('Magento\Checkout\Api\Data\ShippingInformationInterface');
-		$extAttributes = $addressInformation->getExtensionAttributes();
+		// echo "<h3>Extension Attribute</h3>";
+		// $objectManagerAtr = \Magento\Framework\App\ObjectManager::getInstance();
+		// $addressInformation = $objectManagerAtr->create('Magento\Checkout\Api\Data\ShippingInformationInterface');
+		// $extAttributes = $addressInformation->getExtensionAttributes();
 
-		$selectedShipping = $extAttributes->getCustomShippingCharge(); //get custom attribute data.
+		// $selectedShipping = $extAttributes->getCustomShippingCharge(); //get custom attribute data.
 
-		var_dump($extAttributes);
+		// var_dump($extAttributes);
 
-		var_dump($selectedShipping);
+		// var_dump($selectedShipping);
 	}
 }
