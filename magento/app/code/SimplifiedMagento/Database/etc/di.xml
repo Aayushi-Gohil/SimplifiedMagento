@@ -1,7 +1,8 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 	<preference for="SimplifiedMagento\Database\Api\Data\PostInterface" type="SimplifiedMagento\Database\Model\Post"/>
-  <preference for="SimplifiedMagento\Database\Api\PostRepositoryInterface" type="SimplifiedMagento\Database\Model\PostRepository"/>
+    <preference for="SimplifiedMagento\Database\Api\PostRepositoryInterface" type="SimplifiedMagento\Database\Model\PostRepository"/>
  <!--  <type name="SimplifiedMagento\Database\Model\PostRepository">
   	<plugin name="attribute_code_plugin" type="SimplifiedMagento\Database\Model\Plugin\CodeAttributeExtension" />
   </type> -->
+    
 </config>

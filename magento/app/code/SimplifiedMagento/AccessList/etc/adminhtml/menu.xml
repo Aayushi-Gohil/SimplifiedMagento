@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+     <add id="SimplifiedMagento_AccessList::menu" title="Custom Menu" module="SimplifiedMagento_AccessList" sortOrder="10" resource="SimplifiedMagento_AccessList::menu"/>
+     <add id="SimplifiedMagento_AccessList::create" title="Create" module="SimplifiedMagento_AccessList" sortOrder="10" parent="SimplifiedMagento_AccessList::menu" action="custommenu/create/index" resource="SimplifiedMagento_AccessList::create"/>
+     <add id="SimplifiedMagento_AccessList::delete" title="Delete" module="SimplifiedMagento_AccessList" sortOrder="20" parent="SimplifiedMagento_AccessList::menu" action="custommenu/delete/index" resource="SimplifiedMagento_AccessList::delete"/>
+     <add id="SimplifiedMagento_AccessList::view" title="View" module="SimplifiedMagento_AccessList" sortOrder="30" parent="SimplifiedMagento_AccessList::menu" action="custommenu/view/index" resource="SimplifiedMagento_AccessList::view"/>
+    </menu>
+</config>
