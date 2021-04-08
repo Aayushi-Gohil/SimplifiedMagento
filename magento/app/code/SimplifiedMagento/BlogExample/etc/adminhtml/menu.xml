@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="SimplifiedMagento_BlogExample::bloglist" title="Blog" module="SimplifiedMagento_BlogExample" sortOrder="51" resource="SimplifiedMagento_BlogExample::blog"/>
+        <add id="SimplifiedMagento_BlogExample::blog" title="Manage Blog" module="SimplifiedMagento_BlogExample" sortOrder="10" action="example/blog" resource="SimplifiedMagento_BlogExample::blog" parent="SimplifiedMagento_BlogExample::bloglist"/>
+        <add id="SimplifiedMagento_BlogExample::blog_configuration" title="Configuration" module="SimplifiedMagento_BlogExample" sortOrder="99" parent="SimplifiedMagento_BlogExample::bloglist" action="adminhtml/system_config/edit/section/blog" resource="SimplifiedMagento_BlogExample::blog_configuration"/>
+    </menu>
+</config>

@@ -12,18 +12,5 @@
 				<item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\FullText</item>
 			</argument>
 		</arguments>
-	</virtualType> 
-	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
-		<arguments>
-			<argument name="collections" xsi:type="array">
-				<item name="custommenu_listing_data_source" xsi:type="string">SimplifiedMagento\Database\Model\Resource\Grid\Collection</item>
-			</argument>
-		</arguments>
-	</type>
-	<virtualType name="SimplifiedMagento\Database\Model\Resource\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
-		<arguments>
-			<argument name="mainTable"  xsi:type="string">post</argument>
-			<argument name="resourceModel"  xsi:type="string">SimplifiedMagento\Database\Model\ResourceModel\Post</argument>
-		</arguments>
 	</virtualType>   
 </config>
