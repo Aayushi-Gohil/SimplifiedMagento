@@ -5,11 +5,13 @@ use SimplifiedMagento\BlogExample\Model\ResourceModel\Blog\CollectionFactory;
  
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
+    protected $loadedData;
+    protected $collection;
     /**
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
-     * @param CollectionFactory $employeeCollectionFactory
+     * @param CollectionFactory $blogCollectionFactory
      * @param array $meta
      * @param array $data
      */
@@ -17,11 +19,11 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         $name,
         $primaryFieldName,
         $requestFieldName,
-        CollectionFactory $employeeCollectionFactory,
+        CollectionFactory $blogCollectionFactory,
         array $meta = [],
         array $data = []
     ) {
-        $this->collection = $employeeCollectionFactory->create();
+        $this->collection = $blogCollectionFactory->create();
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
  
@@ -32,6 +34,15 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
      */
     public function getData()
     {
-        return [];
+        if (isset($this->loadedData)) {
+            return $this->loadedData;
+        }
+        $items = $this->collection->getItems();
+        $this->loadedData = array();
+        foreach ($items as $blog) {
+           $this->loadedData[$blog->getId()]['blog'] = $blog->getData();
+        }
+        // return [];
+        return $this->loadedData;
     }
 }

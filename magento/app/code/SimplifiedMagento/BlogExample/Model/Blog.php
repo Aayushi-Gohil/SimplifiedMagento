@@ -2,11 +2,11 @@
 namespace SimplifiedMagento\BlogExample\Model;
 class Blog extends \Magento\Framework\Model\AbstractModel implements \Magento\Framework\DataObject\IdentityInterface
 {
-	const CACHE_TAG = 'blog';
+	const CACHE_TAG = 'blog_collection';
 
-	protected $_cacheTag = 'blog';
+	protected $_cacheTag = 'blog_collection';
 
-	protected $_eventPrefix = 'blog';
+	protected $_eventPrefix = 'blog_collection';
 
 	protected function _construct()
 	{

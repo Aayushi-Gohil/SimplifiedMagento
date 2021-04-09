@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Dev_Blog::view" title="Dev Blog" module="Dev_Blog" sortOrder="10" resource="Dev_Blog::view"/>
+        <add id="Dev_Blog::grid" title="Add Blog Records" module="Dev_Blog" sortOrder="9" parent="Dev_Blog::view" action="devblog/grid/new" resource="Dev_Blog::view"/>
+    </menu>
+</config>

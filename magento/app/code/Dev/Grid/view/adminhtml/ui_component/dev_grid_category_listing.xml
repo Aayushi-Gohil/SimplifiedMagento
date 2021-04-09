@@ -68,7 +68,7 @@
          </argument> 
       </action> -->
     </massaction>
-    <filters name="listing_filters">
+    <!-- <filters name="listing_filters">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="templates" xsi:type="array">
@@ -81,7 +81,7 @@
                     </item>
                 </item>
             </argument>
-    </filters>
+    </filters> -->
     <paging name="listing_paging"/>
   </listingToolbar>
   <columns name="dev_grid_category_columns">

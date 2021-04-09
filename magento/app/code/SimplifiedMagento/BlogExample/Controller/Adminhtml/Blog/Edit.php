@@ -1,26 +1,25 @@
 <?php
 namespace SimplifiedMagento\BlogExample\Controller\Adminhtml\Blog;
-
+use Magento\Framework\Controller\ResultFactory;
 
 class Edit extends \Magento\Backend\App\Action
-{	
-	/** @var \Magento\Framework\View\Result\PageFactory  */
-	protected $resultPageFactory;
+{
+	// protected $resultPageFactory = false;
+	protected $resultFactory;
 	public function __construct(
-	     \Magento\Framework\App\Action\Context $context,
-	     \Magento\Framework\View\Result\PageFactory $resultPageFactory
+		\Magento\Backend\App\Action\Context $context,
+		// \Magento\Framework\View\Result\PageFactory $resultPageFactory
+		\Magento\Framework\Controller\ResultFactory $resultFactory
 	) {
-	     $this->resultPageFactory = $resultPageFactory;
-	     parent::__construct($context);
+		parent::__construct($context);
+		// $this->resultPageFactory = $resultPageFactory;
+		$this->resultFactory = $resultFactory;
 	}
-	/**
-	* Load the page defined in view/adminhtml/layout/samplenewpage_sampleform_index.xml
-	*
-	* @return \Magento\Framework\View\Result\Page
-	*/
 	public function execute()
 	{
-	    $resultPage = $this->resultPageFactory->create();
+		//Call page factory to render layout and page content
+		// $resultPage = $this->resultPageFactory->create();
+		$resultPage = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
 		//Set the menu which will be active for this page
 		$resultPage->setActiveMenu('SimplifiedMagento_BlogExample::blog_manage');
 		
@@ -29,7 +28,10 @@ class Edit extends \Magento\Backend\App\Action
 		//Add bread crumb
 		$resultPage->addBreadcrumb(__('SimplifiedMagento'), __('BlogExample'));
 		$resultPage->addBreadcrumb(__('Hello World'), __('Edit Blog'));
-	    return $resultPage;
+		// $resultPage->addContent(
+  //           $resultPage->getLayout()->createBlock('SimplifiedMagento\BlogExample\Block\Adminhtml\Grid')
+  //       );
+		return $resultPage;
 	}
 	/*
 	 * Check permission via ACL resource
