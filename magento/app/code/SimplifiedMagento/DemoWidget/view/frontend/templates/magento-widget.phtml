@@ -1,0 +1,340 @@
+<div class="maindiv">
+    <div class="secondary">
+        Widget Example using Magento 2
+    </div>
+<div> 
+<div id="loader-example" data-mage-init='{"loader": { "icon": "../../loading.gif"}}'>
+    <h3>Block</h3>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos itaque numquam placeat quam recusandae velit voluptas. Ad architecto asperiores eos eveniet id nostrum officiis saepe soluta totam voluptate! Debitis, quibusdam.
+</div>
+<div class="field">
+    <label>Date : </label>
+    <input type="text" class="input-text" id="example-date" style="width: auto" name="example-date" />
+</div>
+<div class="confirmation-modal-content">
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+</div>
+<div class="breadcrumbs" id="breadcrumbs-example"></div>
+<div class="customer-welcome">
+    <button
+        data-mage-init='{"dropdown":{}}'
+        data-toggle="dropdown"
+        class="action"
+        data-action="customer-menu-toggle">
+            <span><?= $block->escapeHtml(__('Dropdown open button')) ?></span>
+    </button>
+    <ul data-target="dropdown" class="dropdown-options">
+        <li>
+            <span class="item"><?= $block->escapeHtml(__('Item 1')) ?></span>
+        </li>
+        <li>
+            <span class="item"><a href="#"><?= $block->escapeHtml(__('Item 2 with link')) ?></a></span>
+        </li>
+        <li>
+            <span class="item"><?= $block->escapeHtml(__('Item 3')) ?></span>
+        </li>
+    </ul>
+</div>
+<?php
+/** @var \Magento\Framework\Escaper $escaper */
+?>
+
+<div class="dropdown-wrap">
+    <button class="dropdown-button">
+        <span><?= $escaper->escapeHtml(__('Dropdown open button')) ?></span>
+    </button>
+    <div id="dropdown-dialog" data-role="dropdownDialog">
+        <?= $escaper->escapeHtml(__('Dropdown content')) ?>
+    </div>
+</div>
+<div class="image-gallery"></div>
+
+<div id="uploader" class="uploader"
+     data-mage-init='{
+        "mediaUploader" : {
+            "maxFileSize": 1,
+            "maxWidth": 1920,
+            "maxHeight": 1200,
+            "isResizeEnabled": true,
+            "disabled": false
+        }
+    }'
+>
+    <div class="fileinput-button form-buttons button">
+        <span>Browse Files...</span>
+        <input id="fileupload" type="file" name="image"
+               data-url="AJAX_URL" multiple="multiple" />
+    </div>
+    <div class="clear"></div>
+    <script id="uploader-template" type="text/x-magento-template" data-template="uploader">
+        <div id="<%- data.id %>" class="file-row">
+            <span class="file-info"><%- data.name %> (<%- data.size %>)</span>
+            <div class="progressbar-container">
+                <div class="progressbar upload-progress" style="width: 0%;"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </script>
+</div>
+<nav class="navigation" data-action="navigation">
+    <ul id="menu" data-mage-init='{"menu":{"responsive":true, "expanded":true, "delay": 200, "position":{"my":"left top","at":"left+10 top+30"}}}'>
+        <li class="level0 level-top ui-menu-item">Toys</li>
+        <li class="level0 level-top parent ui-menu-item">Electronics
+            <ul class="level0 submenu ui-menu ui-widget ui-widget-content ui-corner-all">
+                <li class="ui-menu-item"><a href="#">Home Entertainment</a></li>
+                <li class="ui-menu-item"><a href="#">Routers</a></li>
+            </ul>
+        </li>
+        <li class="level0 level-top ui-menu-item">Music
+            <ul class="level0 submenu ui-menu ui-widget ui-widget-content ui-corner-all">
+                <li class="ui-menu-item">
+                    <a href="#">Alternative</a>
+                </li>
+                <li class="ui-menu-item">
+                    <a href="#">Classic</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<button id="button">
+    <span><?= $block->escapeHtml(__('Click me')) ?></span>
+</button>
+
+<div id="modal">
+    <div class="modal-body-content">
+        <h2><?= $block->escapeHtml(__('Title')) ?></h2>
+        <p><?= $block->escapeHtml(__('Content')) ?></p>
+    </div>
+</div>
+<div class="select-example">
+    <select id="multiselect" name="multiselect-field" multiple="multiple">
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+    </select>
+    <script>
+        require(['jquery', 'mage/multiselect'], function ($) {
+            $('#multiselect').multiselect2({selectedValues: [2, 4]});
+        });
+    </script>
+</div>
+<form action="BACKEND_ACTION" method="post" data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+        <div class="field password required" data-mage-init='{"passwordStrengthIndicator": {
+            "passwordStrengthMeterSelector":"[data-role=strength-meter]",
+            "passwordStrengthMeterLabelSelector":"[data-role=strength-meter-label]"
+        }}'>
+            <label class="label" for="password">Password</label>
+            <div class="control">
+                <input type="password" class="input-text" name="password" id="password">
+                <div id="password-strength-meter-container" data-role="strength-meter" aria-live="polite">
+                    <div id="password-strength-meter" class="password-strength-meter">
+                        <span id="password-strength-meter-label" data-role="strength-meter-label">
+                            No Password
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" class="action submit primary"><span>Set a New Password</span></button>
+        </div>
+    </div>
+</form>
+
+<script>
+  require([
+    'jquery',
+    'mage/translate',
+    'mage/calendar'
+    ], function ($, $t) {
+      $('#example-date').calendar({
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        currentText: $t('Go Today'),
+        closeText: $t('Close'),
+        showWeek: true
+      });
+    })
+</script>
+<script type="text/x-magento-init">
+    {
+        ".maindiv": {
+            "myCustomWidget": {
+                "passvalue": "custom message",
+                "abcd": 123
+            }
+        }
+    }
+</script>
+<script>
+    require([
+    'jquery',
+    'Magento_Ui/js/modal/confirm'
+], function ($, confirmation) {
+    'use strict';
+
+    confirmation({
+        title: $.mage.__('Confirmation Title'),
+        content: $('.confirmation-modal-content'),
+        actions: {
+            confirm: function() {
+                // do something when the confirmation button is clicked
+            },
+            cancel: function() {
+                // do something when the cancel button is clicked
+            },
+            always: function() {
+                // do something when the modal is closed
+            }
+        },
+        buttons: [{
+            text: $.mage.__('Cancel'),
+            class: 'action-secondary action-dismiss',
+            click: function (event) {
+                this.closeModal(event);
+            }
+        }, {
+            text: $.mage.__('OK'),
+            class: 'action-primary action-accept',
+            click: function (event) {
+                this.closeModal(event, true);
+            }
+        }, {
+            text: $.mage.__('New Action'),
+            class: 'action primary action-new',
+            click: function (event) {
+                // New action
+            }
+        }]
+    });
+});
+</script>
+<script>
+    require([
+        'jquery',
+        'Magento_Theme/js/model/breadcrumb-list',
+        'breadcrumbs'
+    ], function ($, breadcrumbList) {
+        'use strict';
+
+        var breadcrumbs = [
+            {
+                'name': 'some-page-1',
+                'link': '/some/path/1',
+                'title': 'Link title for page 1',
+                'label': 'Some page 1'
+            },
+            {
+                'name': 'some-page-1',
+                'link': '/some/path/2',
+                'title': 'Link title for page 1',
+                'label': 'Some page 2'
+            }
+        ];
+
+        // adding breadcrumbs to the Breadcrumb List
+        breadcrumbs.forEach(function (breadcrumb) {
+            breadcrumbList.push(breadcrumb);
+        });
+
+        // Breadcrumbs widget initialization
+        $('#breadcrumbs-example').breadcrumbs();
+    });
+</script>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'dropdownDialog'
+        ], function($, dropdownDialog) {
+            'use strict';
+
+            $('#dropdown-dialog').dropdownDialog({
+                appendTo: '.dropdown-wrap',
+                triggerTarget: '.dropdown-button',
+                closeOnMouseLeave: false,
+                closeOnEscape: true,
+                timeout: 2000,
+                triggerClass: 'active',
+                parentClass: 'active',
+                buttons: [{
+                    text: $.mage.__('Close'),
+                    click: function () {
+                        $(this).dropdownDialog("close");
+                    }
+                }]
+            });
+        }
+    );
+</script>
+<script>
+require ([
+    'jquery',
+    'mage/gallery/gallery'
+], function ($, gallery) {
+    $(function () {
+        $('.image-gallery').each(function (index, element) {
+            gallery({
+                options: {
+                    "nav": "false",
+                    "loop": "true",
+                    "arrows": "true"
+                },
+                data: [
+                    { img: "../../image1.png" },
+                    { img: "../../image1.png" },
+                    { img: "../../image1.png" }
+                ],
+                fullscreen: {
+                    "navdir": "horizontal"
+                },
+                "breakpoints": {
+                    "<breakpoint_name>": {
+                        "conditions": {
+                            "max-width": "767px"
+                        },
+                        "options": {}
+                    }
+                }
+            }, element);
+        });
+    });
+});
+</script>
+<script>
+require(['jquery', 'loader', 'domReady!'], function ($) {
+    'use strict';
+
+    $('#loader-example').trigger('processStart');
+});
+</script>
+
+<script type="text/javascript">
+    require([
+        "jquery",
+        "Magento_Ui/js/modal/modal"
+    ],function($, modal) {
+
+        var options = {
+            type: 'popup',
+            responsive: true,
+            title: 'Main title',
+            buttons: [{
+                text: $.mage.__('Ok'),
+                class: '',
+                click: function () {
+                    this.closeModal();
+                }
+            }]
+        };
+
+        var popup = modal(options, $('#modal'));
+        $("#button").click(function() {
+            $('#modal').modal('openModal');
+        });
+    });
+</script>
