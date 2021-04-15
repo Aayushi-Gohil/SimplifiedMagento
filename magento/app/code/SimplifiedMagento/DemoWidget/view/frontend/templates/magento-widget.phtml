@@ -1,12 +1,15 @@
+<h3>Custom widget with two alert</h3>
 <div class="maindiv">
-    <div class="secondary">
+    <div class="secondary"  data-mage-init='{"sticky":{"container": ".maindiv"}}'>
         Widget Example using Magento 2
     </div>
 <div> 
+<h3>Loader</h3>
 <div id="loader-example" data-mage-init='{"loader": { "icon": "../../loading.gif"}}'>
     <h3>Block</h3>
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos itaque numquam placeat quam recusandae velit voluptas. Ad architecto asperiores eos eveniet id nostrum officiis saepe soluta totam voluptate! Debitis, quibusdam.
 </div>
+<h3>Calender</h3>
 <div class="field">
     <label>Date : </label>
     <input type="text" class="input-text" id="example-date" style="width: auto" name="example-date" />
@@ -14,7 +17,9 @@
 <div class="confirmation-modal-content">
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
 </div>
+<h3>Breadcrumb</h3>
 <div class="breadcrumbs" id="breadcrumbs-example"></div>
+<h3>Dropdown</h3>
 <div class="customer-welcome">
     <button
         data-mage-init='{"dropdown":{}}'
@@ -35,6 +40,7 @@
         </li>
     </ul>
 </div>
+<h3>DropdownDialog</h3>
 <?php
 /** @var \Magento\Framework\Escaper $escaper */
 ?>
@@ -47,8 +53,9 @@
         <?= $escaper->escapeHtml(__('Dropdown content')) ?>
     </div>
 </div>
+<h3>Gallery</h3>
 <div class="image-gallery"></div>
-
+<h3>Media Uploader</h3>
 <div id="uploader" class="uploader"
      data-mage-init='{
         "mediaUploader" : {
@@ -76,6 +83,7 @@
         </div>
     </script>
 </div>
+<h3>Menu / Navigation</h3>
 <nav class="navigation" data-action="navigation">
     <ul id="menu" data-mage-init='{"menu":{"responsive":true, "expanded":true, "delay": 200, "position":{"my":"left top","at":"left+10 top+30"}}}'>
         <li class="level0 level-top ui-menu-item">Toys</li>
@@ -97,6 +105,7 @@
         </li>
     </ul>
 </nav>
+<h3>Modal</h3>
 <button id="button">
     <span><?= $block->escapeHtml(__('Click me')) ?></span>
 </button>
@@ -107,6 +116,7 @@
         <p><?= $block->escapeHtml(__('Content')) ?></p>
     </div>
 </div>
+<h3>Multi Select</h3>
 <div class="select-example">
     <select id="multiselect" name="multiselect-field" multiple="multiple">
             <option value="1">Option 1</option>
@@ -119,6 +129,7 @@
         });
     </script>
 </div>
+<h3>Password Strength</h3>
 <form action="BACKEND_ACTION" method="post" data-mage-init='{"validation":{}}'>
     <fieldset class="fieldset">
         <div class="field password required" data-mage-init='{"passwordStrengthIndicator": {
@@ -144,7 +155,317 @@
         </div>
     </div>
 </form>
+<h3>Window Popup</h3>
+<a href="#" class="action" title="Open Customer Login"
+   data-mage-init='{"popupWindow": {
+        "windowURL": "customer/account/login",
+        "windowName": "customer-login",
+        "width": 400,
+        "height": 400,
+        "left": 0,
+        "top": 0,
+        "resizable": 1,
+        "scrollbars": 1,
+        "status": 1,
+        "menubar": 1
+    }}'>
+    <span>Open Customer Login</span>
+</a>
+<h3>Search</h3>
+<form class="" id="new_search_form" action="/catalogsearch/result/" method="get">
+   <div class="field search">
+      <div class="control">
+          <input id="new-search"
+              data-mage-init='{"quickSearch":{
+                     "formSelector":"#new_search_form",
+                     "minSearchLength": 1,
+                     "url":"search/ajax/suggest",
+                     "destinationSelector":"#search_results"}
+                    }'
+              type="text"
+              name="q"
+              placeholder="<?= $block->escapeHtmlAttr(__('Search entire store here...')) ?>"
+              class="input-text"/>
+         <div id="search_results" class="search-autocomplete"></div>
+      </div>
+  </div>
+  <div class="actions">
+    <button type="submit"
+            title="<?= $block->escapeHtml(__('Search')) ?>"
+            class="action search"
+            aria-label="Search">
+      <span><?= $block->escapeHtml(__('Search')) ?></span>
+    </button>
+  </div>
+</form>
+<h3>Redirect</h3>
+<button class="action primary"
+        data-mage-init='{"redirectUrl": {"event": "click", "url": "http://google.com"}}'
+        type="button"
+        title="Redirect Button">
+    <span>Redirect Button</span>
+</button>
+<h3>Remaining Character</h3>
+<input id="remaining-characters" type="text"/>
+<p class="note">
+    <span class="character-counter"></span>
+</p>
+<h3>Row Builder</h3>
+<script id="row-template" type="text/x-magento-template">
+    <div>
+        <div class="field name required">
+            <label for="field-name<%- data._index_ %>" class="label"><span>Item <%- data._index_ %> Field</span></label>
+            <div class="control">
+                <input name="field[name][<%- data._index_ %>]" type="text" title="<?= $block->escapeHtmlAttr(__('Name')) ?>" class="input-text"
+                       id="field-name<%- data._index_ %>"/>
+            </div>
+        </div>
+        <div class="actions-toolbar">
+            <div class="secondary">
+                <a href="#" id="btn-remove<%- data._index_ %>" class="action remove"
+                   title="Remove Item">
+                    <span>Remove Item</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</script>
+<div class="row-builder-example"
+     data-mage-init='{
+        "rowBuilder":{
+            "rowTemplate":"#row-template",
+            "rowContainer":"#row-container",
+            "rowParentElem":"<div></div>",
+            "remEventSelector":"a",
+            "btnRemoveSelector":".action.remove",
+            "maxRows":"5",
+            "maxRowsMsg":"#max-rows-message",
+            "addRowBtn":"#add-row-button",
+            "additionalRowClass":"additional"
+        }
+     }'>
+    <div id="max-rows-message" style="display: none;" class="message notice limit" role="alert">
+        <span>Number of rows exceeded.</span>
+    </div>
+    <button type="button" id="add-row-button" class="action add">
+        <span>Add Item</span>
+    </button>
+    <div id="row-container"></div>
+</div>
+<h3>Sortable</h3>
+<ul id="sortable-list">
+    <li>
+        <div>
+            <span>Sortable Item #1</span>
+        </div>
+        <input type="button" class="up" title="Up" value="Up">
+        <input type="button" class="down" title="Down" value="Down">
+    </li>
+    <li>
+        <div>
+            <span>Sortable Item #2</span>
+        </div>
+        <input type="button" class="up" title="Up" value="Up">
+        <input type="button" class="down" title="Down" value="Down">
+    </li>
+    <li>
+        <div>
+            <span>Sortable Item #3</span>
+        </div>
+        <input type="button" class="up" title="Up" value="Up">
+        <input type="button" class="down" title="Down" value="Down">
+    </li>
+</ul>
+<h3>Tab</h3>
+<div class="product data items"
+     data-mage-init='{"mage/tabs": {"openedState": "active", "animate": {"duration": 100}, "active": 1, "disabled": [2], "disabledState": "disabled"}}'>
+    <div class="item title" data-role="collapsible">
+        <a class="switch" data-toggle="trigger" href="#tab-cars">Cars</a>
+    </div>
+    <div id="tab-cars" class="item content" data-role="content">Cars content</div>
 
+    <div class="item title" data-role="collapsible">
+        <a class="switch" data-toggle="trigger" href="#tab-movies">Movies</a>
+    </div>
+    <div id="tab-movies" class="item content" data-role="content">Movies content</div>
+
+    <div class="item title" data-role="collapsible">
+        <a class="switch" data-toggle="trigger" href="#tab-music">Music</a>
+    </div>
+    <div id="tab-music" class="item content" data-role="content">Music Content</div>
+</div>
+<h3>Toggle</h3>
+<!-- data-mage-init='{"toggleAdvanced": {"selectorsToggleClass": "active", "baseToggleClass": "expanded", "toggleContainers": "#toggleContainer", "newLabel": "Expanded Toggle Button"}}' -->
+<div class="toggle-example" id="element">
+    <div class="toggle-wrap">
+        <a href="#"
+           
+           id="toggle"
+           title="Title"
+           class="action">Toggle Button</a>
+    </div>
+    <div class="toggle-container" id="toggleContainer">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad autem, corporis ducimus ex in ipsam minima nisi nulla officiis omnis quae quaerat quasi quo ratione reiciendis rem repellendus temporibus, voluptates.</p>
+    </div>
+</div>
+<h3>Trim Input</h3>
+<!-- data-mage-init='{"mage/trim-input":{}}'  -->
+<input type="text" name="text" id="element1" class="input-text" data-mage-init='{"mage/trim-input":{}}' placeholder="Type some text...">
+<h3>Accordian</h3>
+<div id="accordion" data-mage-init='{
+        "accordion":{
+            "active": [1, 2],
+            "collapsible": true,
+            "openedState": "active",
+            "multipleCollapsible": true
+        }}'>
+    <div data-role="collapsible">
+        <div data-role="trigger">
+            <h4>Title 1</h4>
+        </div>
+    </div>
+    <div data-role="content">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</div>
+
+    <div data-role="collapsible">
+        <div data-role="trigger">
+            <h4>Title 2</h4>
+        </div>
+    </div>
+    <div data-role="content"> It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+
+    <div data-role="collapsible">
+        <div data-role="trigger">
+            <h4>Title 3</h4>
+        </div>
+    </div>
+    <div data-role="content">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.</div>
+</div>
+<h3>Collapsible</h3>
+<div data-mage-init='{
+    "collapsible":{
+        "collapsible": true,
+        "openedState": "active",
+        "active": true
+    }}'>
+    <div data-role="title">
+        <h4>Fruit</h4>
+    </div>
+    <div data-role="content">
+        <ul>
+            <li>Orange</li>
+            <li>Apple</li>
+            <li>Banana</li>
+        </ul>
+    </div>
+</div>
+<div data-mage-init='{
+    "collapsible":{
+        "animate":{ "duration" :1000, "easing":"easeOutCubic"}
+    }}'>
+    <div data-role="title">
+        <h4>Exams</h4>
+    </div>
+    <div data-role="content">
+        <ul>
+            <li>Maths</li>
+            <li>English</li>
+            <li>Science</li>
+        </ul>
+    </div>
+</div>
+
+<!-- <script type="text/x-magento-init">
+    {
+        "img": {
+            "mage/gallery/gallery": {
+                "data": [{
+                    "thumb": "../../image1.png",
+                    "img": "../../image1.png",
+                    "full": "../../image1.png",
+                    "caption": "Hello",
+                    "isMain": "true"
+                }],
+                "mixins": ["magnifier/magnify"],
+                "magnifierOpts": {
+                   "enabled": true,
+                   "eventType": "hover",
+                   "width": 400,
+                   "height": 275,
+                   "top": 50,
+                   "left": 50,
+                   "fullscreenzoom": 5,
+                   "mode": "inside"
+                }
+            }
+        }
+    }
+</script> -->
+
+<!-- <script>
+    require([
+        'jquery',
+        'mage/trim-input'
+    ], function ($) {
+        'use strict';
+
+        $("#element1").trimInput();
+    });
+</script> -->
+
+
+<script>
+    require([
+        'jquery',
+        'toggleAdvanced'
+    ], function ($) {
+        'use strict';
+
+        $("#toggle").toggleAdvanced({
+            selectorsToggleClass : 'active',
+            baseToggleClass : 'expanded',
+            toggleContainers : '#toggleContainer',
+            newLabel : 'Expanded Toggle Button'
+        });
+    });
+</script>
+<!-- <script type="text/x-magento-init">
+ {
+   ".page-title": {
+       "sticky": {
+         "container": ".page-title-wrapper"
+         }
+    }
+ }
+</script> -->
+<script>
+require([
+    "jquery",
+    "jquery/ui",
+    "Magento_Theme/js/sortable"
+], function ($) {
+    'use strict';
+
+    $('#sortable-list').sortable({
+       axis: 'y',
+       tolerance: 'pointer',
+       items: 'li'
+    });
+});
+</script>
+<script>
+    require([
+        "jquery",
+        "Magento_Catalog/js/product/remaining-characters"
+    ], function ($) {
+        'use strict';
+
+        $('#remaining-characters').remainingCharacters({
+            maxLength: 5,
+            noteSelector: '.note',
+            counterSelector: '.note .character-counter'
+        });
+    });
+</script>
 <script>
   require([
     'jquery',
