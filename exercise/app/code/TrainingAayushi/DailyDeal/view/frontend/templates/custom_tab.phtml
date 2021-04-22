@@ -2,9 +2,11 @@
 $product = $block->getProduct();
 if ($product->getData('deal_status')) {
 	$end_datetime = $product->getData('deal_date');
-	$date =  date( "Y/m/d H:i:s",strtotime($end_datetime));   
+	$date =  date( "Y/m/d",strtotime($end_datetime));  
 	$endstr= date(strtotime($date));
-	$now =   date("Y/m/d H:i:s");
+	$now_date = new DateTime('now', new DateTimeZone('Asia/Kolkata'));
+    $now = $now_date->format('Y/m/d H:i:s');
+
 ?>
 <script>
 
@@ -27,9 +29,8 @@ if ($product->getData('deal_status')) {
         var date = no;
         var now = new Date(date);
         var de= now.getTime();
-
         if ( flag_time ) {
-        timer = de;
+       	 timer = de;
         }
         var d = new Date(timer);
         currentYear = d.getFullYear();
@@ -61,7 +62,8 @@ if ($product->getData('deal_status')) {
                 };
 
             clearInterval(timer);
-            document.getElementById('countdown').innerHTML = 'Completed';
+            // document.getElementById('countdown').innerHTML = 'Completed';
+            document.getElementById('countdown').innerHTML = 'No deal available.';
 
 
             return;
@@ -70,6 +72,7 @@ if ($product->getData('deal_status')) {
         var hours = Math.floor((distance % _day) / _hour);
         var minutes = Math.floor((distance % _hour) / _minute);
         var seconds = Math.floor((distance % _minute) / _second);
+        var moretext = 'This deal available for only ';
         if (days <10)
         	{days = '0' + days;}
 	    if (hours <10)
@@ -105,7 +108,7 @@ if ($product->getData('deal_status')) {
 
 	    }
 	        sectext = '<span class="countdown-text">'+ seconds +'</span>';
-	        document.getElementById('countdown').innerHTML = dytext + hrtext +  mintext + sectext;
+	        document.getElementById('countdown').innerHTML = moretext + dytext + hrtext +  mintext + sectext;
 	       flag_time = false;
 	    }
 
@@ -114,7 +117,6 @@ if ($product->getData('deal_status')) {
 
 </script>
 <h1 style="color: #1979c3">
-	This deal available for only
 	<span id="countdown" class="countdown">
 		<script>showtiming('<?php echo $date?>','<?php echo $now ?>')</script>
 	</span>
