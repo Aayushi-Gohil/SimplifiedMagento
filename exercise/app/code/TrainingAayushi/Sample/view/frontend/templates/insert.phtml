@@ -1,0 +1,54 @@
+<?php
+ $record = $block->getEditRecord();
+ $arr = explode(',', $record['customer_group_ids']);
+ // var_dump($record);
+?>
+<form method="POST" action="<?php echo $block->getUrl('sample/index/save'); ?>" data-mage-init='{"validation":{"rules": {"field-4": {"required":true}}}}'>
+  <fieldset>
+    <legend>Sample Data</legend>
+    Data Title:<br>
+    <input type="text" name="data_title" value="<?php echo $record['data_title'] ?>"  placeholder="Enter Data Title" required>
+    <br>
+    Sample Data Content:<br>
+    <textarea  id="data_description" name="data_description" rows="4" cols="50"><?php echo $record['data_description']; ?></textarea>
+    <br>
+    	<input type="checkbox" id="is_active" name="is_active" value="1" <?php if ($record['is_active'] == 1) echo 'checked'; ?>>
+		<label for="status">Status</label>
+    <br>
+    <label for="Category">Select Category</label>
+
+	<select name="category_data" id="category_data">
+	  <option>-- Please Select --</option>
+	  <option value="1" <?php if ($record['category_data'] == 1) echo 'selected'; ?>>News</option>
+	  <option value="2" <?php if ($record['category_data'] == 2) echo 'selected'; ?>>Business</option>
+	  <option value="3" <?php if ($record['category_data'] == 3) echo 'selected'; ?>>Education</option>
+	  <option value="4" <?php if ($record['category_data'] == 4) echo 'selected'; ?>>Entertainment</option>
+	  <option value="5" <?php if ($record['category_data'] == 5) echo 'selected'; ?>>Sports</option>
+	</select>
+    <br>
+    Data related to which Gender:<br>
+      <input type="radio" id="male" name="gender" value="0" <?php if ($record['gender'] == 0) echo 'checked'; ?>>
+	  <label for="male">Male</label><br>
+	  <input type="radio" id="female" name="gender" value="1" <?php if ($record['gender'] == 1) echo 'checked'; ?>>
+	  <label for="female">Female</label>
+	 <br>
+	    <input type="checkbox" id="useful" name="useful" value="1" <?php if ($record['useful'] == 1) echo 'checked'; ?>>
+		<label for="useful">Useful this Data</label>
+	<br>
+	   <label for="group"> Customer Groups </label>
+
+		<select name="customer_group_ids" id="customer_group_ids" multiple>
+		  <option value="0" <?php if (in_array("0", $arr)) echo 'selected'; ?>>NOT LOGGED IN</option>
+		  <option value="1" <?php if (in_array("1", $arr)) echo 'selected'; ?>>General</option>
+		  <option value="2" <?php if (in_array("2", $arr)) echo 'selected'; ?>>Wholesale</option>
+		  <option value="3" <?php if (in_array("3", $arr)) echo 'selected'; ?>>Retailer</option>
+		</select> 
+	<br>
+		<label for="favcolor">Select your favorite color:</label>
+	    <input type="color" id="color" name="color" value="<?php echo $record['color']; ?>">
+	<br>
+	    <input type="hidden" name="editRecordId" value="<?php echo $record['data_id']; ?>" >
+    	<input type="submit" value="Submit">
+  </fieldset>
+</form>
+<!--  <input type="text" name="url_key"  placeholder="Enter Post Url" required data-validate='{"required":true, "url": true}'> -->
