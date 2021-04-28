@@ -1,0 +1,17 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <preference for="TrainingAayushi\CustomerRestriction\Api\IpRepositoryInterface" type="TrainingAayushi\CustomerRestriction\Model\IpRepository" />
+    <preference for="TrainingAayushi\CustomerRestriction\Api\Data\IpInterface" type="TrainingAayushi\CustomerRestriction\Model\Ip" />
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="blockip_listing_data_source" xsi:type="string">TrainingAayushi\CustomerRestriction\Model\ResourceModel\Ip\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="TrainingAayushi\CustomerRestriction\Model\ResourceModel\Ip\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">blocked_ip</argument>
+            <argument name="resourceModel" xsi:type="string">TrainingAayushi\CustomerRestriction\Model\ResourceModel\Ip</argument>
+        </arguments>
+    </virtualType>
+</config>

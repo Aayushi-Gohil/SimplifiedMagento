@@ -1,0 +1,6 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="TrainingAayushi_CustomerRestriction::ip" title="Blocked Visitor Ip Log " module="TrainingAayushi_CustomerRestriction" sortOrder="75" resource="TrainingAayushi_CustomerRestriction::ip"
+             action="blockip/ip/index"/>
+    </menu>
+</config>
