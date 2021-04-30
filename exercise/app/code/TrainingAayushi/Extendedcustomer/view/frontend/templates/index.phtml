@@ -1,0 +1,34 @@
+<?php 
+
+$father_config = $this->helper('TrainingAayushi\Extendedcustomer\Helper\Dataconfig')->getFather();
+$mother_config = $this->helper('TrainingAayushi\Extendedcustomer\Helper\Dataconfig')->getMother();
+
+if (($mother_config == 1) || ($father_config == 1)) {
+	$father = $this->helper('TrainingAayushi\Extendedcustomer\Helper\Data')->getFatherValue();
+	$mother = $this->helper('TrainingAayushi\Extendedcustomer\Helper\Data')->getMotherValue();
+?>
+<div class="block block-dashboard-info">
+    <div class="block-title"><strong>Basic Information</strong></div>
+    <div class="block-content">
+    	<?php if ($father_config == 1) { ?>
+	        <div class="box box-information">
+			    <strong class="box-title">
+			        <span>Father’s Name</span>
+			    </strong>
+			    <div class="box-content">
+			        <p><?php echo $father; ?></p>
+			    </div>
+			</div>
+		<?php } if ($mother_config == 1) { ?>
+        <div class="box box-newsletter">
+		    <strong class="box-title">
+		        <span>Mother’s Name</span>
+		    </strong>
+		    <div class="box-content">
+		        <p><?php echo $mother; ?></p>
+		    </div>
+		</div>
+		<?php } } ?>
+    </div>
+</div>
+

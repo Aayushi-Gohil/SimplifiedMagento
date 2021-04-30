@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <extended>
+            <general>
+                <father_name>0</father_name>
+                <mother_name>0</mother_name>
+            </general>
+        </extended>
+    </default>
+</config>
