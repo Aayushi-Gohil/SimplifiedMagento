@@ -113,7 +113,6 @@ class AffectedProductslist extends \Magento\Backend\Block\Template
             $ruleId = $catalogRule->getRuleId();
             $requestId = $this->request->getParam('id');
             foreach ($productIdsAccToRule as $productId => $ruleProductArray) {
-                // if (!empty($ruleProductArray[$websiteId])) {
                 if ($requestId == $ruleId) {
                     array_push($resultProductIds, $productId);
                 }
