@@ -19,10 +19,6 @@ class AffectedProductslist extends \Magento\Backend\Block\Template
      */
     protected $blockGrid;
 
-    /**
-     * @var \Magento\Framework\Registry
-     */
-    protected $registry;
 
     /**
      * @var \Magento\Framework\Json\EncoderInterface
@@ -49,9 +45,10 @@ class AffectedProductslist extends \Magento\Backend\Block\Template
      */
     protected $request;
 
+
     /**
      * @param \Magento\Backend\Block\Template\Context                           $context
-     * @param \Magento\Framework\Registry                                       $registry
+     * 
      * @param \Magento\Framework\Json\EncoderInterface                          $jsonEncoder
      * @param \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productFactory
      * @param \TrainingAayushi\AffectedProducts\Model\Rule $rule
@@ -59,7 +56,6 @@ class AffectedProductslist extends \Magento\Backend\Block\Template
      */
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
-        \Magento\Framework\Registry $registry,
         \Magento\Framework\Json\EncoderInterface $jsonEncoder,
         \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productFactory,
         StoreManagerInterface $storeManager,
@@ -67,7 +63,6 @@ class AffectedProductslist extends \Magento\Backend\Block\Template
         \Magento\Framework\App\Request\Http $request,
         array $data = []
     ) {
-        $this->registry = $registry;
         $this->jsonEncoder = $jsonEncoder;
         $this->storeManager = $storeManager;
         $this->catalogRule = $catalogRule;
@@ -118,6 +113,7 @@ class AffectedProductslist extends \Magento\Backend\Block\Template
             $ruleId = $catalogRule->getRuleId();
             $requestId = $this->request->getParam('id');
             foreach ($productIdsAccToRule as $productId => $ruleProductArray) {
+                // if (!empty($ruleProductArray[$websiteId])) {
                 if ($requestId == $ruleId) {
                     array_push($resultProductIds, $productId);
                 }
@@ -132,10 +128,5 @@ class AffectedProductslist extends \Magento\Backend\Block\Template
             return $this->jsonEncoder->encode($productFactory->getData());
         }
         return '{}';
-    }
-
-    public function getItem()
-    {
-        return $this->registry->registry('my_item');
     }
 }
