@@ -19,16 +19,5 @@
                 <argument name="block" xsi:type="object">TrainingAayushi\AffectedProducts\Block\Adminhtml\AffectedProductslist</argument>
             </htmlContent>
         </container>
-        <!-- <block class="TrainingAayushi\AffectedProducts\Block\Product\ProductList\Related" name="catalog.product.related" template="TrainingAayushi_AffectedProducts::product/list/items.phtml">
-            <arguments>
-               <argument name="type" xsi:type="string">related</argument>
-               <argument name="view_model" xsi:type="object">Magento\Catalog\ViewModel\Product\Listing\PreparePostData</argument>
-            </arguments>
-            <block class="Magento\Catalog\Block\Product\ProductList\Item\Container" name="related.product.addto" as="addto">
-               <block class="Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare"
-                  name="related.product.addto.compare" as="compare"
-                  template="Magento_Catalog::product/list/addto/compare.phtml"/>
-            </block>
-        </block> -->
     </fieldset>
 </form>

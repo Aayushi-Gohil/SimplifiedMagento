@@ -30,6 +30,11 @@ class Productgrid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected $productCollFactory;
 
     /**
+     * @var \Magento\Framework\App\Request\Http
+     */
+    protected $request;
+
+    /**
      * @param \Magento\Backend\Block\Template\Context    $context
      * @param \Magento\Backend\Helper\Data               $backendHelper
      * @param \Magento\Catalog\Model\ProductFactory      $productFactory
@@ -48,6 +53,7 @@ class Productgrid extends \Magento\Backend\Block\Widget\Grid\Extended
         \Magento\Framework\Module\Manager $moduleManager,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         RuleFactory $catalogRule,
+        \Magento\Framework\App\Request\Http $request,
         Visibility $visibility = null,
         array $data = []
     ) {
@@ -57,6 +63,7 @@ class Productgrid extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->moduleManager = $moduleManager;
         $this->_storeManager = $storeManager;
         $this->catalogRule = $catalogRule;
+        $this->request = $request;
         $this->visibility = $visibility ?: ObjectManager::getInstance()->get(Visibility::class);
         parent::__construct($context, $backendHelper, $data);
     }
@@ -96,8 +103,10 @@ class Productgrid extends \Magento\Backend\Block\Widget\Grid\Extended
         $catalogRuleCollection->addIsActiveFilter(1);
         foreach ($catalogRuleCollection as $catalogRule) {
             $productIdsAccToRule = $catalogRule->getMatchingProductIds();
+            $ruleId = $catalogRule->getRuleId();
+            $requestId = $this->request->getParam('id');
             foreach ($productIdsAccToRule as $productId => $ruleProductArray) {
-                if (!empty($ruleProductArray[$websiteId])) {
+                if ($requestId == $ruleId) {
                     array_push($resultProductIds, $productId);
                 }
             }

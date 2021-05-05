@@ -44,6 +44,11 @@ class AffectedProductslist extends \Magento\Backend\Block\Template
      */
     protected $productFactory;
 
+     /**
+     * @var \Magento\Framework\App\Request\Http
+     */
+    protected $request;
+
     /**
      * @param \Magento\Backend\Block\Template\Context                           $context
      * @param \Magento\Framework\Registry                                       $registry
@@ -59,6 +64,7 @@ class AffectedProductslist extends \Magento\Backend\Block\Template
         \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productFactory,
         StoreManagerInterface $storeManager,
         RuleFactory $catalogRule,
+        \Magento\Framework\App\Request\Http $request,
         array $data = []
     ) {
         $this->registry = $registry;
@@ -66,6 +72,7 @@ class AffectedProductslist extends \Magento\Backend\Block\Template
         $this->storeManager = $storeManager;
         $this->catalogRule = $catalogRule;
         $this->productFactory = $productFactory;
+        $this->request = $request;
         parent::__construct($context, $data);
     }
 
@@ -105,14 +112,18 @@ class AffectedProductslist extends \Magento\Backend\Block\Template
         $resultProductIds = [];
         $catalogRuleCollection = $this->catalogRule->create()->getCollection();
         $catalogRuleCollection->addIsActiveFilter(1);
+
         foreach ($catalogRuleCollection as $catalogRule) {
             $productIdsAccToRule = $catalogRule->getMatchingProductIds();
+            $ruleId = $catalogRule->getRuleId();
+            $requestId = $this->request->getParam('id');
             foreach ($productIdsAccToRule as $productId => $ruleProductArray) {
-                if (!empty($ruleProductArray[$websiteId])) {
+                if ($requestId == $ruleId) {
                     array_push($resultProductIds, $productId);
                 }
             }
-        }      
+        }    
+
         $productIds = implode(',', $resultProductIds);
         $productFactory = $this->productFactory->create();
         $productFactory->addFieldToFilter('entity_id', ['in' => $productIds]);
