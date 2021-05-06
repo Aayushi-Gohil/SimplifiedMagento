@@ -25,15 +25,15 @@ class Data extends AbstractHelper
 
     public function getFatherValue()
     {
-        // $customerId  = $this->customerSession->getCustomer()->getId();
-        $customer = $this->customerRepository->getById(1);
+        $customerId  = $this->customerSession->getCustomer()->getId();
+        $customer = $this->customerRepository->getById($customerId);
         return $customer->getCustomAttribute('father_name')->getValue();
     }
 
     public function getMotherValue()
     {
-        // $customerId  = $this->customerSession->getCustomer()->getId();
-        $customer = $this->customerRepository->getById(1);
+        $customerId  = $this->customerSession->getCustomer()->getId();
+        $customer = $this->customerRepository->getById($customerId);
         return $customer->getCustomAttribute('mother_name')->getValue();
     }
 }
