@@ -99,16 +99,21 @@ class Fee extends \Magento\Framework\View\Element\Template
      */
      public function initTotals()
     {
+
         $parent = $this->getParentBlock();
-        $this->_order = $parent->getOrder();
+        $this->_order = $parent->getOrder();        
         $this->_source = $parent->getSource();
+
         $store = $this->getStore();
+
         if ($this->_helperData->getStatus() == 1) {
+            $feeAmt = $this->_helperData->getFee();
+            $extFee = ($feeAmt/100) * $this->_order->getBaseSubtotal();
             $fee = new \Magento\Framework\DataObject(
                 [
                     'code' => 'fee',
                     'strong' => false,
-                    'value' => $this->_helperData->getFee(),
+                    'value' => $extFee,
                     'label' => __('Custom Fee'),
                 ]
             );
@@ -121,8 +126,10 @@ class Fee extends \Magento\Framework\View\Element\Template
                     'label' => __('Custom Fee'),
                 ]
             );
-        }     
+        }
+        
         $parent->addTotal($fee, 'fee');
+
         return $this;
     }
 

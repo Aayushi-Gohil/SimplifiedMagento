@@ -1,11 +1,15 @@
 <?php
-namespace TrainingAayushi\OrderProcessing\Model\Total;
 
-use TrainingAayushi\OrderProcessing\Helper\DataConfig;
+namespace TrainingAayushi\OrderProcessing\Model\Quote\Total;
+
+use Magento\Store\Model\ScopeInterface;
 
 class Fee extends \Magento\Quote\Model\Quote\Address\Total\AbstractTotal
 {
-   /**
+
+    protected $helperData;
+
+    /**
      * Collect grand total address amount
      *
      * @param \Magento\Quote\Model\Quote $quote
@@ -13,34 +17,35 @@ class Fee extends \Magento\Quote\Model\Quote\Address\Total\AbstractTotal
      * @param \Magento\Quote\Model\Quote\Address\Total $total
      * @return $this
      */
-    protected $quoteValidator = null; 
+    protected $quoteValidator = null;
 
-    /**
-     * @var Helper
-     */
-    protected $_helperData;
-
-    public function __construct(\Magento\Quote\Model\QuoteValidator $quoteValidator, DataConfig $helperData)
+    public function __construct(\Magento\Quote\Model\QuoteValidator $quoteValidator,
+                                \TrainingAayushi\OrderProcessing\Helper\DataConfig $helperData)
     {
         $this->quoteValidator = $quoteValidator;
-        $this->_helperData = $helperData;
+        $this->helperData = $helperData;
     }
-  public function collect(
+
+    public function collect(
         \Magento\Quote\Model\Quote $quote,
         \Magento\Quote\Api\Data\ShippingAssignmentInterface $shippingAssignment,
         \Magento\Quote\Model\Quote\Address\Total $total
-    ) {
+    )
+    {
         parent::collect($quote, $shippingAssignment, $total);
+        if (!count($shippingAssignment->getItems())) {
+            return $this;
+        }
+
 
         $exist_amount = 0;  
-        if ($this->_helperData->getStatus() == 1) {
-            $feeAmt = $this->_helperData->getFee(); 
+        if ($this->helperData->getStatus() == 1) {
+            $feeAmt = $this->helperData->getFee(); 
             $balance = ($feeAmt/100) * $quote->getSubtotal();
         }else{
             $feeAmt = 0; 
             $balance = ($feeAmt/100) - $exist_amount;
         }
-        
 
         $total->setTotalAmount('fee', $balance);
         $total->setBaseTotalAmount('fee', $balance);
@@ -51,38 +56,18 @@ class Fee extends \Magento\Quote\Model\Quote\Address\Total\AbstractTotal
         $total->setBaseGrandTotal($total->getBaseGrandTotal() + $balance);
 
         return $this;
-    } 
-
-    protected function clearValues(Address\Total $total)
-    {
-        $total->setTotalAmount('subtotal', 0);
-        $total->setBaseTotalAmount('subtotal', 0);
-        $total->setTotalAmount('tax', 0);
-        $total->setBaseTotalAmount('tax', 0);
-        $total->setTotalAmount('discount_tax_compensation', 0);
-        $total->setBaseTotalAmount('discount_tax_compensation', 0);
-        $total->setTotalAmount('shipping_discount_tax_compensation', 0);
-        $total->setBaseTotalAmount('shipping_discount_tax_compensation', 0);
-        $total->setSubtotalInclTax(0);
-        $total->setBaseSubtotalInclTax(0);
     }
+
     /**
      * @param \Magento\Quote\Model\Quote $quote
-     * @param Address\Total $total
-     * @return array|null
-     */
-    /**
-     * Assign subtotal amount and label to address object
-     *
-     * @param \Magento\Quote\Model\Quote $quote
-     * @param Address\Total $total
+     * @param \Magento\Quote\Model\Quote\Address\Total $total
      * @return array
-     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function fetch(\Magento\Quote\Model\Quote $quote, \Magento\Quote\Model\Quote\Address\Total $total)
     {
-        if ($this->_helperData->getStatus() == 1) {
-            $feeAmt = $this->_helperData->getFee(); 
+
+        if ($this->helperData->getStatus() == 1) {
+            $feeAmt = $this->helperData->getFee(); 
             $extFee = ($feeAmt/100) * $quote->getSubtotal();
             return [
                 'code' => 'fee',
@@ -106,5 +91,23 @@ class Fee extends \Magento\Quote\Model\Quote\Address\Total\AbstractTotal
     public function getLabel()
     {
         return __('Custom Fee');
+    }
+
+    /**
+     * @param \Magento\Quote\Model\Quote\Address\Total $total
+     */
+    protected function clearValues(\Magento\Quote\Model\Quote\Address\Total $total)
+    {
+        $total->setTotalAmount('subtotal', 0);
+        $total->setBaseTotalAmount('subtotal', 0);
+        $total->setTotalAmount('tax', 0);
+        $total->setBaseTotalAmount('tax', 0);
+        $total->setTotalAmount('discount_tax_compensation', 0);
+        $total->setBaseTotalAmount('discount_tax_compensation', 0);
+        $total->setTotalAmount('shipping_discount_tax_compensation', 0);
+        $total->setBaseTotalAmount('shipping_discount_tax_compensation', 0);
+        $total->setSubtotalInclTax(0);
+        $total->setBaseSubtotalInclTax(0);
+
     }
 }

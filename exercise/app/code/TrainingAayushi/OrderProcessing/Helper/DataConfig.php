@@ -2,7 +2,7 @@
 
 namespace TrainingAayushi\OrderProcessing\Helper;
 
-class Dataconfig extends \Magento\Framework\App\Helper\AbstractHelper 
+class DataConfig extends \Magento\Framework\App\Helper\AbstractHelper 
 {   
     const FEE_FIELD = 'orderprocessing/general/fee';
     const STATUS_FIELD = 'orderprocessing/general/status';
