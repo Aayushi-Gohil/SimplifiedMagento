@@ -1,0 +1,26 @@
+<?php 
+
+$father = $this->helper('TrainingAayushi\Extendedcustomer\Helper\Dataconfig')->getFather();
+$mother = $this->helper('TrainingAayushi\Extendedcustomer\Helper\Dataconfig')->getMother();
+
+$fatherValue = $this->helper('TrainingAayushi\Extendedcustomer\Helper\Data')->getFatherValue();
+$motherValue = $this->helper('TrainingAayushi\Extendedcustomer\Helper\Data')->getMotherValue();
+
+if (($mother == 1) || ($father == 1)) { ?>
+    <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Additional Information') ?></span></legend><br></p>
+    <?php if ($father == 1) { ?>
+        <div class="field father_name">
+            <label for="father_name" class="label"><span><?php /* @escapeNotVerified */ echo __('Father’s Name') ?></span></label>
+            <div class="control">
+                <input type="text" name="father_name" id="father_name" title="<?php /* @escapeNotVerified */ echo __('Father’s Name') ?>" class="input-text" autocomplete="off" value= <?php echo $fatherValue; ?> >
+            </div>
+        </div>
+    <?php } if ($mother == 1) { ?>
+    <div class="field mother_name">
+        <label for="mother_name" class="label"><span><?php /* @escapeNotVerified */ echo __('Mother’s Name') ?></span></label>
+        <div class="control">
+            <input type="text" name="mother_name" id="mother_name" title="<?php /* @escapeNotVerified */ echo __('Mother’s Name') ?>" class="input-text" autocomplete="off" value= <?php echo $motherValue; ?>>
+        </div>
+    </div>
+
+<?php } } ?>
